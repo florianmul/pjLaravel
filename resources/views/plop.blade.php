@@ -1,0 +1,1 @@
+<strong>plop:{{$mot}}</strong>
