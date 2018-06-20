@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Slider;
+
 class HomeController extends Controller
 {
     /**
@@ -26,8 +28,6 @@ class HomeController extends Controller
     
     public function index()
     {
-        //$sliders = DB::table('slider')->get();
-        //return view('home')->with('slider',$sliders);
         $sliders = Slider::all();
         return view('home', compact('sliders')); 
     }
