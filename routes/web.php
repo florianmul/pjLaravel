@@ -15,7 +15,7 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::get('home/{id}', 'SliderController@displaySlider')->name('displaySlider');
+Route::get('home/slider/{id}', 'SliderController@displaySlider')->name('displaySlider');
 Route::get('/delete/{id}','SliderController@delete');
 Auth::routes();
 
