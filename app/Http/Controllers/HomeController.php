@@ -28,8 +28,6 @@ class HomeController extends Controller
     
     public function index()
     {
-        //$sliders = DB::table('slider')->get();
-        //return view('home')->with('slider',$sliders);
         $sliders = Slider::all();
         return view('home', compact('sliders')); 
     }
