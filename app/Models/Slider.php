@@ -10,31 +10,20 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Post
+ * Class Slider
  * 
  * @property int $id
- * @property int $author
- * @property string $content
+ * @property string $titre
+ * @property string $auteur
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * 
- * @property \App\Models\User $user
  *
  * @package App\Models
  */
-class Post extends Eloquent
+class Slider extends Eloquent
 {
-	protected $casts = [
-		'author' => 'int'
-	];
-
 	protected $fillable = [
-		'author',
-		'content'
+		'titre',
+		'auteur'
 	];
-
-	public function user()
-	{
-		return $this->belongsTo(\App\Models\User::class, 'author');
-	}
 }

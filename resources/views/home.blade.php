@@ -44,7 +44,7 @@
                             {{ $slider->auteur }}
                         </td>
                         <td>
-                            @foreach(slider->$images as $image)
+                            @foreach($slider->$images as $image)
                                 {{ $image->path }}
                             @endforeach
                         </td>
