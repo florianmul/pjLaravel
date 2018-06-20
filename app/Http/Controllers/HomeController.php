@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 class HomeController extends Controller
 {
     /**
@@ -21,8 +23,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
-        return view('home');
+        //$sliders = DB::table('slider')->get();
+        //return view('home')->with('slider',$sliders);
+        $sliders = Slider::all();
+        return view('home', compact('sliders')); 
     }
+    
+    
 }
