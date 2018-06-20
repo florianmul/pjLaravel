@@ -14,15 +14,9 @@
 Route::get('/', function () {
 	return view('welcome');
 });
-Route::get('/plop/{mot?}', function ($mot='pas de mot') {
-	return view('plop',['mot'=>$mot]);
-});
-Route::get('/page/{page?}', function ($page='home') {
-	return view($page,['page'=>$page]);
-});
-Route::get('/wall/{search?}', 'WallController@show')->name('wall');
-Route::get('/show/{id}');
-Route::post('/write', 'WallController@write');
+
+Route::get('home/{id}', 'SliderController@displaySlider')->name('displaySlider');
+Route::get('/delete/{id}','SliderController@delete');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
