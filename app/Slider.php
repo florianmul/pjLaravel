@@ -7,8 +7,4 @@ use Illuminate\Database\Eloquent\Model;
 class Slider extends Model
 {
     //
-    public function media()
-    {
-        return $this->belongsToMany('App\Media');
-    }
 }
