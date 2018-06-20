@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 class SliderController extends Controller
@@ -13,7 +13,8 @@ class SliderController extends Controller
     }
     public function delete($id)
     {
-        Slider::find($id)->delete();
+        $slider = Slider::find($id);
+        $slider->delete();
         return Redirect::route('home');
     }
 
