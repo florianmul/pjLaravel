@@ -8,7 +8,7 @@ class SliderController extends Controller
 {
     
     function displaySlider($id) {
-        $slider = Slider::find($id);
+        //$slider = Slider::find($id);
         return view('displaySlider', compact('slider'));
     }
     public function delete($id)
