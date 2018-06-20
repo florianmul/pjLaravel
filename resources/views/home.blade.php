@@ -16,8 +16,10 @@
 </div>
 <div class="container">
     <div class="row justify-content-center">
+
         <button class="btn btn-primary">Créer un nouveau slider</button>
-        <table>
+        
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Titre</th>
