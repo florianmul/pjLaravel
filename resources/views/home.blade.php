@@ -23,12 +23,16 @@
 
     <div class="row">
         <div class="col-md-12">
+            @if(session()->has('messageSuppression'))
+                <div class="alert alert-success alert-dismissible">
+                    {{ session()->get('messageSuppression') }}
+                </div>
+            @endif
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Titre</th>
                         <th>Auteur</th>
-                        <th>Images</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -42,12 +46,6 @@
                         </td>
                         <td>
                             {{ $slider->auteur }}
-                        </td>
-                        <td>
-                            {{ $slider->id }}
-                            @foreach($slider->images as $image)
-                                {{ $image->file }}
-                            @endforeach
                         </td>
                         <td>
                             <a class="btn btn-info" href="{{URL::to('/update/'.$slider->id) }}">

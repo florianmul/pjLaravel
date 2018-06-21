@@ -15,9 +15,11 @@ class SliderController extends Controller
     }
     public function delete($id)
     {
-        $slider = Sliders::find($id);
+        $slider = Slider::find($id);
+        $slider->images()->detach();
         $slider->delete();
-        return Redirect::route('home');
+        
+        return redirect()->back()->with('messageSuppression', 'Suppression réussie');
     }
 /*
     public function fileUpload(Request $request) {
