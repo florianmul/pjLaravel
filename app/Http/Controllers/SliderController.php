@@ -9,6 +9,7 @@ use App\Image;
 
 class SliderController extends Controller
 {
+
     public function createform()
     {
         $images = Image::all();
@@ -25,8 +26,15 @@ class SliderController extends Controller
         $slider->delete();
         
         return redirect()->back()->with('messageSuppression', 'Suppression réussie');
-    }
-    
+    } 
+    /*public function add(Request $request) {
+        $slider = Sliders::create([
+
+        ]);
+        $post->content = $request->slide_content;
+        $post->save();
+        return redirect('slider');
+    }*/
 /*
     public function fileUpload(Request $request) {
 
@@ -41,10 +49,5 @@ class SliderController extends Controller
         return back()->with('success','Image chargée avec succès ! 
         ');
     }
-    public function add(Request $request) {
-		$post = new Sliders;
-		$post->content = $request->slide_content;
-		$post->save();
-		return redirect('slider');
-    }*/
+*/
 }
