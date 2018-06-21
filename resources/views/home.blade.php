@@ -17,7 +17,7 @@
     <h1 id="titre">Liste des sliders</h1>
     <div class="row">
         <div class="col-md-12">
-            <a id="btnajout" href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Créer un nouveau slider</a>
+            <a id="btnajout" href="{{URL::to('/create/') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Créer un nouveau slider</a>
         </div>
     </div>
 
