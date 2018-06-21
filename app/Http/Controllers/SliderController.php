@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
-use App\Models\Slider;
+use App\Slider;
 
 class SliderController extends Controller
 {
     function displaySlider($id) {
-        $slider = Sliders::find($id);
+        $slider = Slider::find($id);
         return view('displaySlider', compact('slider'));
     }
     public function delete($id)
