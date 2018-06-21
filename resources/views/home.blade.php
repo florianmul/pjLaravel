@@ -44,9 +44,10 @@
                             {{ $slider->auteur }}
                         </td>
                         <td>
-                            {{ $slider->id }}            
-                            <?php var_dump($slider->images); ?>
-                            
+                            {{ $slider->id }}
+                            @foreach($slider->images as $image)
+                                {{ $image->file }}
+                            @endforeach
                         </td>
                         <td>
                             <a class="btn btn-info" href="{{URL::to('/update/'.$slider->id) }}">

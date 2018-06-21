@@ -14,11 +14,10 @@ class CreateImageSliderTable extends Migration
     public function up()
     {
         Schema::create('image_slider', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('slider_id')->unsigned();
-            $table->foreign('slider_id')->references('id')->on('sliders');
             $table->integer('image_id')->unsigned();
             $table->foreign('image_id')->references('id')->on('images');
+            $table->integer('slider_id')->unsigned();
+            $table->foreign('slider_id')->references('id')->on('sliders');
 
             
             $table->timestamps();

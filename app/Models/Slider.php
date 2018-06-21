@@ -20,7 +20,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  *
  * @package App\Models
  */
-class Sliders extends Eloquent
+class Slider extends Eloquent
 {
 	protected $fillable = [
 		'titre',

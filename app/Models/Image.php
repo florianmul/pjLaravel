@@ -10,7 +10,7 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Images
+ * Class Image
  * 
  * @property int $id
  * @property string $file
@@ -19,7 +19,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  *
  * @package App\Models
  */
-class Images extends Eloquent
+class Image extends Eloquent
 {
 	protected $fillable = [
 		'file'
