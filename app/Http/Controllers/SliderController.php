@@ -33,6 +33,21 @@ class SliderController extends Controller
             $slider->titre = Input::get('titre');
             $slider->auteur = Input::get('auteur');
             $slider->save();
+            if(Input::get('imageadded') != null) {
+                $image = new Image;
+                $image->file = Input::get('imageadded');
+                $image->save();
+
+            }
+            
+            //partie pivot
+            var_dump(Input::get('images[]'));
+            /*
+            foreach(Input::get('images[]') as $i) {
+                $slider->pivot->slider_id = $slider->id;
+                $slider->pivot->image_id = $i->id;
+                $slider->pivot->save();
+            }*/
         }
 
         Session::flash('message', 'Création réussie !');
@@ -51,27 +66,5 @@ class SliderController extends Controller
         
         return redirect()->back()->with('message', 'Suppression réussie');
     } 
-    /*public function add(Request $request) {
-        $slider = Sliders::create([
-
-        ]);
-        $post->content = $request->slide_content;
-        $post->save();
-        return redirect('slider');
-    }*/
-/*
-    public function fileUpload(Request $request) {
-
-        $this->validate($request, [
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        $image = $request->file('image');
-        $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = public_path('/images');
-        $image->move($destinationPath, $input['imagename']);
-        $this->postImage->add($input);
-        return back()->with('success','Image chargée avec succès ! 
-        ');
-    }
-*/
+    
 }
