@@ -5,19 +5,28 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
 use App\Slider;
+use App\Image;
 
 class SliderController extends Controller
 {
+
+    public function createform()
+    {
+        $images = Image::all();
+        return view('create', compact('images')); 
+    }
     function displaySlider($id) {
         $slider = Slider::find($id);
         return view('displaySlider', compact('slider'));
     }
     public function delete($id)
     {
-        $slider = Sliders::find($id);
+        $slider = Slider::find($id);
+        $slider->images()->detach();
         $slider->delete();
-        return Redirect::route('home');
-    }
+        
+        return redirect()->back()->with('messageSuppression', 'Suppression réussie');
+    } 
     /*public function add(Request $request) {
         $slider = Sliders::create([
 
