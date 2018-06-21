@@ -8,7 +8,6 @@ use App\Models\Sliders;
 
 class SlidersController extends Controller
 {
-    
     function displaySlider($id) {
         $slider = Sliders::find($id);
         return view('displaySlider', compact('slider'));
@@ -19,6 +18,14 @@ class SlidersController extends Controller
         $slider->delete();
         return Redirect::route('home');
     }
+    /*public function add(Request $request) {
+        $slider = Sliders::create([
+
+        ]);
+        $post->content = $request->slide_content;
+        $post->save();
+        return redirect('slider');
+    }*/
 /*
     public function fileUpload(Request $request) {
 
@@ -33,10 +40,5 @@ class SlidersController extends Controller
         return back()->with('success','Image chargée avec succès ! 
         ');
     }
-    public function add(Request $request) {
-		$post = new Sliders;
-		$post->content = $request->slide_content;
-		$post->save();
-		return redirect('slider');
-    }*/
+*/
 }

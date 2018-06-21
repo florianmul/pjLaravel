@@ -9,6 +9,6 @@ class Sliders extends Model
     //
     public function images()
     {
-        return $this->belongsToMany('App\Images');
+        return $this->belongsToMany('App\Image');
     }
 }
