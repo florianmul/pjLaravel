@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class images extends Model
+class Images extends Model
 {
     //
-    public function slider()
+    public function sliders()
     {
-        return $this->belongsToMany('App\Slider');
+        return $this->belongsToMany('App\Sliders');
     }
 }

@@ -44,7 +44,9 @@
                             {{ $slider->auteur }}
                         </td>
                         <td>
-                            test
+                            {{ $slider->id }}            
+                            <?php var_dump($slider->images->file); ?>
+                            
                         </td>
                         <td>
                             <a class="btn btn-info" href="{{URL::to('/update/'.$slider->id) }}">
