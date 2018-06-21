@@ -6,22 +6,12 @@
 	<p>{{ $slider->auteur }}</p>
 
 	<div class="slideshow-container">
-
+	@foreach($slider->images as $image)
 		<div class="mySlides fade">
-		<div class="numbertext">1 / 3</div>
-		<img src="img_nature_wide.jpg" style="width:100%">
+			<div class="numbertext">{{ $image->id }}</div>
+			<img src="{{ URL::to('/') }}/images/{{ $image->file }}" style="width:100%">
 		</div>
-
-		<div class="mySlides fade">
-		<div class="numbertext">2 / 3</div>
-		<img src="img_snow_wide.jpg" style="width:100%">
-		</div>
-
-		<div class="mySlides fade">
-		<div class="numbertext">3 / 3</div>
-		<img src="img_mountains_wide.jpg" style="width:100%">
-		</div>
-
+	@endforeach
 	</div>
 <br>
 
