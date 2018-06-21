@@ -3,21 +3,23 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
-use App\Models\Slider;
-class SliderController extends Controller
+
+use App\Models\Sliders;
+
+class SlidersController extends Controller
 {
     
     function displaySlider($id) {
-        $slider = Slider::find($id);
+        $slider = Sliders::find($id);
         return view('displaySlider', compact('slider'));
     }
     public function delete($id)
     {
-        $slider = Slider::find($id);
+        $slider = Sliders::find($id);
         $slider->delete();
         return Redirect::route('home');
     }
-
+/*
     public function fileUpload(Request $request) {
 
         $this->validate($request, [
@@ -32,9 +34,9 @@ class SliderController extends Controller
         ');
     }
     public function add(Request $request) {
-		$post = new Slider;
+		$post = new Sliders;
 		$post->content = $request->slide_content;
 		$post->save();
 		return redirect('slider');
-    }
+    }*/
 }

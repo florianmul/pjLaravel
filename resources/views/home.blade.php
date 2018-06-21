@@ -44,13 +44,14 @@
                             {{ $slider->auteur }}
                         </td>
                         <td>
-                            test
+                            {{ $slider->id }}            
+                            <?php var_dump($slider->images->file); ?>
+                            
                         </td>
                         <td>
                             <a class="btn btn-info" href="{{URL::to('/update/'.$slider->id) }}">
                                 <span class="fas fa-edit"></span>
                             </a>
-                            {{ $slider->id }}
                             <a class="btn btn-danger" href="{{URL::to('/delete/'.$slider->id) }}">
                                 <span class="fas fa-trash"></span>
                             </a>
