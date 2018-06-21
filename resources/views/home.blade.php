@@ -45,7 +45,7 @@
                         </td>
                         <td>
                             {{ $slider->id }}            
-                            <?php var_dump($slider->images->file); ?>
+                            <?php var_dump($slider->images); ?>
                             
                         </td>
                         <td>

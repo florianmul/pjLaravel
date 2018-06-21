@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Sliders;
-use App\Models\Image;
+use App\Models\Images;
 
 class HomeController extends Controller
 {
