@@ -17,9 +17,11 @@ Route::get('/', function () {
 Route::get('/home/slider/create','SliderController@createform')->name('createform');
 Route::get('/home/slider/{id}', 'SliderController@displaySlider')->name('displaySlider');
 Route::get('/home/slider/delete/{id}','SliderController@delete')->name('delete');
-
 Route::get('/home/slider/update/{id}','SliderController@updateform')->name('updateform');
 Route::post('/home/slider/store','SliderController@store')->name('store');
+Route::get('home/slider/{id}', 'SliderController@displaySlider')->name('displaySlider');
+Route::get('/update/{id}','SliderController@updateform');
+Route::post('/modify','SliderController@update');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
