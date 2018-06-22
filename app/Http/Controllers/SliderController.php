@@ -9,7 +9,14 @@ use App\Image;
 
 class SliderController extends Controller
 {
-
+    public function update(Request $request){
+        
+    }
+    public function updateForm($id){
+        $images = Image::all();
+        $slider = Slider::find($id);
+        return view('update',compact('images', 'slider'));
+    }
     public function createform()
     {
         $images = Image::all();

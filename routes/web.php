@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::get('home/slider/{id}', 'SliderController@displaySlider')->name('displaySlider');
 Route::get('/delete/{id}','SliderController@delete');
 Route::get('/create','SliderController@createform');
+Route::get('/update/{id]','SliderController@updateform');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
