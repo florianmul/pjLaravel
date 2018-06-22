@@ -47,7 +47,17 @@ class SliderController extends Controller
                 $image->file = Input::get('imageadded');
                 $image->save();
                 $ext = File::extension($image->file);
-                Storage::disk('public_uploads')->put('img'.$image->id.'.'.$ext, $image);
+                //
+                //$filename = 'img'.$image->id. '.' .$ext;
+                //$path = public_path('images/' . $filename);
+                //Image::make($image->getRealPath())->resize(800, 500)->save($path);
+        /*
+                $name = 'img'.$image->id.'.'.$ext;
+                $destinationPath = public_path('/images');
+                $image->file->move($destinationPath, $name);*/
+
+                $ext = File::extension($image->file);
+                Storage::disk('public')->put('img'.$image->id.'.'.$ext, $image->file);
             }                
            
             Session::flash('message', 'Création réussie !');
