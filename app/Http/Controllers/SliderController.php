@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Session;
+use Illuminate\Support\Facades\DB;
 
 use App\Slider;
 use App\Image;
@@ -10,7 +13,26 @@ use App\Image;
 class SliderController extends Controller
 {
     public function update(Request $request){
-        
+        $rules = [
+            'titre'=> 'required',
+        ];
+        $validator = Validator::make($request->toArray(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            Session::flash('message','Echec de la modification');
+        } else {
+            // store
+            $slider = Slider::find($request->id);
+            $slider->titre= $request->titre;
+            $slider->save();
+            DB::table('image_slider')->where('slider_id',$slider->id)->delete();
+            //$images=Image::wherein('id',$request->images);
+            $slider->images()->attach($request->images);
+            // redirect
+            Session::flash('message', 'Modification validé');
+            return Redirect::to('home');
+        }
     }
     public function updateForm($id){
         $images = Image::all();

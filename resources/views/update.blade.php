@@ -3,7 +3,8 @@
 @section('content')
     <div class="container bg-white">
 
-                {!! Form::open(['action' => 'SliderController@update'])!!}
+                {!! Form::open(['url'=>'/modify'])!!}
+                {!! Form::hidden('id',$slider->id)!!}
                 {!! Form::text('titre',$slider->titre)!!}
                 @foreach($images as $image)
                     {{$in=false}}
@@ -13,11 +14,12 @@
                         @endif
                     @endforeach
                     @if($in==true)
-                        {!! Form::checkbox('image',$image->id,true)!!}
+                        {!! Form::checkbox('images[]',$image->id,true)!!}
                     @else
-                        {!! Form::checkbox('image',$image->id)!!}
+                        {!! Form::checkbox('images[]',$image->id)!!}
                     @endif
                 @endforeach
+                {!! Form::submit() !!}
                 {!! Form::close() !!}
     </div>
 @endsection
