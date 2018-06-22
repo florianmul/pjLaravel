@@ -17,7 +17,7 @@
     <h1 id="titre">Liste des sliders</h1>
     <div class="row">
         <div class="col-md-12">
-            <a id="btnajout" href="{{URL::to('/create/') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Créer un nouveau slider</a>
+            <a id="btnajout" href="{{ route('createform') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Créer un nouveau slider</a>
         </div>
     </div>
 
@@ -40,7 +40,7 @@
                     @foreach ($sliders as $slider)
                     <tr>
                         <td>
-                            <a href="{{ url('home/slider/' . $slider->id) }}">
+                            <a href="{{ route('displaySlider', ['id' => $slider->id]) }}">
                                 {{ $slider->titre }}
                             </a>
                         </td>
@@ -48,10 +48,10 @@
                             {{ $slider->auteur }}
                         </td>
                         <td>
-                            <a class="btn btn-info" href="{{URL::to('/update/'.$slider->id) }}">
+                            <a class="btn btn-info" href="{{ route('updateform', [$slider->id]) }}">
                                 <span class="fas fa-edit"></span>
                             </a>
-                            <a class="btn btn-danger" href="{{URL::to('/delete/'.$slider->id) }}">
+                            <a class="btn btn-danger" href="{{ route('delete', [$slider->id]) }}">
                                 <span class="fas fa-trash"></span>
                             </a>
                         </td>

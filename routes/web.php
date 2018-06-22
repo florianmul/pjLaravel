@@ -14,12 +14,12 @@
 Route::get('/', function () {
 	return view('welcome');
 });
+Route::get('/home/slider/create','SliderController@createform')->name('createform');
+Route::get('/home/slider/{id}', 'SliderController@displaySlider')->name('displaySlider');
+Route::get('/home/slider/delete/{id}','SliderController@delete')->name('delete');
 
-Route::get('home/slider/{id}', 'SliderController@displaySlider')->name('displaySlider');
-Route::get('/delete/{id}','SliderController@delete');
-Route::get('/create','SliderController@createform');
-Route::get('/update/{id}','SliderController@updateform');
-Route::post('store','SliderController@store')->name('store');
+Route::get('/home/slider/update/{id}','SliderController@updateform')->name('updateform');
+Route::post('/home/slider/store','SliderController@store')->name('store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

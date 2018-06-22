@@ -14,7 +14,7 @@
         <div class="form-control">
             @foreach($images as $image)
                 {!! Form::label('images','Images') !!}
-                {!! Form::checkbox('image[]', '{{ $image->id }}' , ['class' => 'form-control']) !!} <img class="imgform" src="{{ URL::to('/') }}/images/{{ $image->file }}">
+                {!! Form::checkbox('images[]', $image->id , ['class' => 'form-control']) !!} <img class="imgform" src="{{ URL::to('/') }}/images/{{ $image->file }}">
             @endforeach
             <br><br>
             {!! Form::file('imageadded') !!}

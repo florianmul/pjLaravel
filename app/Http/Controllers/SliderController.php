@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Session;
 use Illuminate\Http\Request;
-
+use Storage;
+use File;
 use App\Slider;
 use App\Image;
 
@@ -18,6 +19,7 @@ class SliderController extends Controller
         return view('create', compact('images')); 
     }
     public function store() {
+        
         $slider = array(
             'titre' => 'required',
             'auteur' => 'required',
@@ -25,33 +27,32 @@ class SliderController extends Controller
         $validator = Validator::make(Input::all(), $slider);
 
         if($validator->fails()) {
-            return Redirect::to('create')
-                ->withErrors($validator);
+            return redirect()->to('createform')
+            ->withInput()
+            ->withErrors($validator);
+
         }
         else {
             $slider = new Slider;
+            
             $slider->titre = Input::get('titre');
             $slider->auteur = Input::get('auteur');
             $slider->save();
+            $images = Input::get('images');
+            Session::flash('message', implode(' ', $images));
+            $slider->images()->attach($images);
             if(Input::get('imageadded') != null) {
+                
                 $image = new Image;
                 $image->file = Input::get('imageadded');
                 $image->save();
-
-            }
-            
-            //partie pivot
-            var_dump(Input::get('images[]'));
-            /*
-            foreach(Input::get('images[]') as $i) {
-                $slider->pivot->slider_id = $slider->id;
-                $slider->pivot->image_id = $i->id;
-                $slider->pivot->save();
-            }*/
+                $ext = File::extension($image->file);
+                Storage::disk('public_uploads')->put('img'.$image->id.'.'.$ext, $image);
+            }                
+           
+            Session::flash('message', 'Création réussie !');
+            return Redirect::to('home');
         }
-
-        Session::flash('message', 'Création réussie !');
-        return Redirect::to('home');
         
     }
     function displaySlider($id) {
