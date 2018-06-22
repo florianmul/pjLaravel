@@ -19,6 +19,7 @@ Route::get('home/slider/{id}', 'SliderController@displaySlider')->name('displayS
 Route::get('/delete/{id}','SliderController@delete');
 Route::get('/create','SliderController@createform');
 Route::get('/update/{id}','SliderController@updateform');
+Route::post('/modify','SliderController@update');
 Route::post('store','SliderController@store')->name('store');
 Auth::routes();
 
