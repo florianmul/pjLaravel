@@ -17,9 +17,9 @@
 <br>
 
 	<div style="text-align:center">
-		<span class="dot"></span> 
-		<span class="dot"></span> 
-		<span class="dot"></span> 
+	@foreach($slider->images as $image)
+	<span class="dot"></span> 
+	@endforeach
 	</div>
 </div>
 @endsection

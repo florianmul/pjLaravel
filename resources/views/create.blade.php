@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container bg-white">
-    {!! Form::open(['route' => 'store', 'class' => 'form']) !!}
+    {!! Form::open(['route' => 'store', 'class' => 'form', 'files' => true]) !!}
         <div class="form-group">
             {!! Form::label('titre','Titre') !!}
             {!! Form::text('titre',null, ['class' => 'form-control']) !!}
@@ -12,9 +12,9 @@
             {!! Form::text('auteur',null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-control">
+            {!! Form::label('images','Images') !!}
             @foreach($images as $image)
-                {!! Form::label('images','Images') !!}
-                {!! Form::checkbox('images[]', $image->id , ['class' => 'form-control']) !!} <img class="imgform" src="{{ URL::to('/') }}/images/{{ $image->file }}">
+                {!! Form::checkbox('images[]', $image->id , false ) !!} <img class="imgform" src="{{ URL::to('/') }}/images/{{ $image->file }}">
             @endforeach
             <br><br>
             {!! Form::file('imageadded') !!}

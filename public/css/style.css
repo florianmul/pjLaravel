@@ -2,6 +2,7 @@
 .bg-white {
     background-color: white;
 }
+
 .imgform {
     width: 100px;
     height: 50px;
@@ -30,7 +31,7 @@ img {
 
 /* Slideshow container */
 .slideshow-container {
-    max-width: 650px;
+    max-width: 450px;
     border-radius: 5px;
     position: relative;
     margin: auto;
