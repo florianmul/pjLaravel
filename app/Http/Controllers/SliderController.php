@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +13,7 @@ use App\Image;
 
 class SliderController extends Controller
 {
+
     public function update(Request $request){
         $rules = [
             'titre'=> 'required',
@@ -44,6 +46,43 @@ class SliderController extends Controller
         $images = Image::all();
         return view('create', compact('images')); 
     }
+    public function store() {
+        $slider = array(
+            'titre' => 'required',
+            'auteur' => 'required',
+        );
+        $validator = Validator::make(Input::all(), $slider);
+
+        if($validator->fails()) {
+            return Redirect::to('create')
+                ->withErrors($validator);
+        }
+        else {
+            $slider = new Slider;
+            $slider->titre = Input::get('titre');
+            $slider->auteur = Input::get('auteur');
+            $slider->save();
+            if(Input::get('imageadded') != null) {
+                $image = new Image;
+                $image->file = Input::get('imageadded');
+                $image->save();
+
+            }
+            
+            //partie pivot
+            var_dump(Input::get('images[]'));
+            /*
+            foreach(Input::get('images[]') as $i) {
+                $slider->pivot->slider_id = $slider->id;
+                $slider->pivot->image_id = $i->id;
+                $slider->pivot->save();
+            }*/
+        }
+
+        Session::flash('message', 'Création réussie !');
+        return Redirect::to('home');
+        
+    }
     function displaySlider($id) {
         $slider = Slider::find($id);
         return view('displaySlider', compact('slider'));
@@ -54,29 +93,7 @@ class SliderController extends Controller
         $slider->images()->detach();
         $slider->delete();
         
-        return redirect()->back()->with('messageSuppression', 'Suppression réussie');
+        return redirect()->back()->with('message', 'Suppression réussie');
     } 
-    /*public function add(Request $request) {
-        $slider = Sliders::create([
-
-        ]);
-        $post->content = $request->slide_content;
-        $post->save();
-        return redirect('slider');
-    }*/
-/*
-    public function fileUpload(Request $request) {
-
-        $this->validate($request, [
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        $image = $request->file('image');
-        $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = public_path('/images');
-        $image->move($destinationPath, $input['imagename']);
-        $this->postImage->add($input);
-        return back()->with('success','Image chargée avec succès ! 
-        ');
-    }
-*/
+    
 }

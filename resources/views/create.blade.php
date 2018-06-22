@@ -2,24 +2,25 @@
 
 @section('content')
 <div class="container bg-white">
-    
-        <form>
+    {!! Form::open(['route' => 'store', 'class' => 'form']) !!}
         <div class="form-group">
-            <label for="titre">Titre</label>
-            <input type="text" class="form-control" id="titre" placeholder="Saisissez un titre">
+            {!! Form::label('titre','Titre') !!}
+            {!! Form::text('titre',null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
-            <label for="auteur">Password</label>
-            <input type="text" class="form-control" id="auteur" placeholder="Saisissez un auteur">
+            {!! Form::label('auteur','Auteur') !!}
+            {!! Form::text('auteur',null, ['class' => 'form-control']) !!}
         </div>
-        <select class="form-control">
+        <div class="form-control">
             @foreach($images as $image)
-                <option>{{ $image->file }}</option>
+                {!! Form::label('images','Images') !!}
+                {!! Form::checkbox('image[]', '{{ $image->id }}' , ['class' => 'form-control']) !!} <img class="imgform" src="{{ URL::to('/') }}/images/{{ $image->file }}">
             @endforeach
-            </select>
-            <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    
+            <br><br>
+            {!! Form::file('imageadded') !!}
+        </div>
+            {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+        <br>
+    {!! Form::close() !!}
 </div>
 @endsection

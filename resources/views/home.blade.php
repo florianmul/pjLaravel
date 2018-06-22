@@ -23,9 +23,9 @@
 
     <div class="row">
         <div class="col-md-12">
-            @if(session()->has('messageSuppression'))
+            @if(session()->has('message'))
                 <div class="alert alert-success alert-dismissible">
-                    {{ session()->get('messageSuppression') }}
+                    {{ session()->get('message') }}
                 </div>
             @endif
             <table class="table table-bordered">
