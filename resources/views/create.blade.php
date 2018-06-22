@@ -11,9 +11,9 @@
             {!! Form::label('auteur','Auteur') !!}
         </div>
         <div class="form-control">
-            {!! Form::label('images','Images') !!}
+            
             @foreach($images as $image)
-                
+                {!! Form::label('images','Images') !!}
                 {!! Form::checkbox('images[]', $image->id , ['class' => 'form-control']) !!} <img class="imgform" src="{{ URL::to('/') }}/images/{{ $image->file }}">
             @endforeach
             <br><br>
